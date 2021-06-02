@@ -1,28 +1,32 @@
+import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.*;
+import pages.menuBar.MainMenuBar;
+import pages.menuBar.MenuBarEnum;
+import pages.product.ProductsPage;
+import pages.shoppingCart.ShoppingCartPageSection;
 
-import static pages.CommonVerifications.getCommonVerification;
-import static pages.MainMenuBar.*;
-import static pages.ProductsPage.*;
-import static pages.ShoppingCartPageSection.*;
+import static pages.menuBar.MainMenuBar.*;
+import static pages.product.ProductsPage.*;
+import static pages.shoppingCart.ShoppingCartPageSection.*;
 
 public class ShoppingCartTests extends BaseTestClass{
     MainMenuBar mainMenuBar = getMainMenuBar();
     ProductsPage productsPage = getProductPage();
     ShoppingCartPageSection shoppingCartPageSection = getShoppingCartPageSection();
-    CommonVerifications commonVerifications = getCommonVerification();
 
     @Test
     public void addProductToShoppingCartFromProductDetailPage() {
         mainMenuBar.goToOptionMenu(MenuBarEnum.DRESSES)
                    .clickOnEveningDressesSubMenu();
 
-        commonVerifications.checkIsDisplayed(eveningDressesTitle());
+        productsPage.verify()
+                .titleIsDisplayed();
 
-        productsPage.clickOnProduct()
-                    .addToShoppingCart()
-                    .checkOutProduct();
+        productsPage.act()
+                .clickOnProduct()
+                .addToShoppingCart()
+                .checkOutProduct();
 
-        shoppingCartPageSection.checkCartQuantityValueIsEqualsTo("1");
+        Assert.assertEquals(shoppingCartPageSection.get().cartQuantityValue(),"1");
     }
 }

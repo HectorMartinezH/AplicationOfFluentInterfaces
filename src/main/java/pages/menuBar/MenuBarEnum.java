@@ -1,4 +1,4 @@
-package pages;
+package pages.menuBar;
 
 public enum MenuBarEnum {
     WOMEN(""), DRESSES("//*[@id='block_top_menu']/ul/li[2]/a"), T_SHIRTS("");

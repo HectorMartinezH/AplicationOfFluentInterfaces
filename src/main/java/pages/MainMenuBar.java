@@ -15,9 +15,16 @@ public class MainMenuBar {
 
     private final String EVENING_DRESSES_SUB_MENU = "//*[@id='block_top_menu']/ul/li[2]/ul/li[2]/a";
 
-    public MainMenuBar goToEveningDressesSubMenu() {
+    private MainMenuBar() {
+    }
+
+    public static MainMenuBar getMainMenuBar() {
+        return new MainMenuBar();
+    }
+
+    public MainMenuBar goToOptionMenu(MenuBarEnum menuOption) {
         Actions actions = new Actions(getChromeDriver());
-        WebElement dressesMenuOption = driver.findElement(By.xpath(DRESSES_MENU_OPTION));
+        WebElement dressesMenuOption = driver.findElement(By.xpath(menuOption.toString()));
         actions.moveToElement(dressesMenuOption).perform();
         return this;
     }

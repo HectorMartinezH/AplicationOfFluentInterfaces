@@ -11,6 +11,13 @@ public class ShoppingCartPageSection {
 
     private String CART_QUANTITY = "//div[@class='shopping_cart']//span[@class='ajax_cart_quantity']";
 
+    private ShoppingCartPageSection() {
+    }
+
+    public static ShoppingCartPageSection getShoppingCartPageSection() {
+        return new ShoppingCartPageSection();
+    }
+
     private String getCartQuantityValue() {
         WebElement cartQuantity = driver.findElement(By.xpath(CART_QUANTITY));
         return cartQuantity.getAttribute("textContent");

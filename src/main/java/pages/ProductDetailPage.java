@@ -10,6 +10,10 @@ public class ProductDetailPage {
 
     private String ADD_TO_CART_BUTTON = "//p[@id='add_to_cart']/button[@type='submit']";
 
+    public static ProductDetailPage getProductDetailPage() {
+        return new ProductDetailPage();
+    }
+
     public void clickOnAddToCartButton() {
         WebElement addToCartButton = driver.findElement(By.xpath(ADD_TO_CART_BUTTON));
         addToCartButton.click();

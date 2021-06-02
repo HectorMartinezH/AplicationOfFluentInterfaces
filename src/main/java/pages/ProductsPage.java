@@ -7,21 +7,26 @@ import org.testng.Assert;
 import utils.DriverFactory;
 
 public class ProductsPage {
-    private AddToCartPopUp addToCartPopUp = new AddToCartPopUp();
+    private AddToCartPopUp addToCartPopUp = AddToCartPopUp.getAddToCartPopUp();
     private ProductDetailPage productDetailPage = new ProductDetailPage();
     private WebDriver driver = DriverFactory.getChromeDriver();
 
 
-    private final String EVENING_DRESSES_TITLE = "//*[@id='center_column']/div[1]/div/div/span";
+    private final static String EVENING_DRESSES_TITLE = "//*[@id='center_column']/div[1]/div/div/span";
     private final String PRODUCT_IMAGE = "//a[@class='product_img_link']";
 
+    private ProductsPage() {
+    }
 
-    public ProductsPage checkIfEveningTitleIsDisplayed(){
-        WebElement eveningDressesTitle = driver.findElement(By.xpath(EVENING_DRESSES_TITLE));
+    public static ProductsPage getProductPage() {
+        return new ProductsPage();
+    }
+
+    public ProductsPage checkIsDisplayed(By element){
+        WebElement eveningDressesTitle = driver.findElement(element);
         Assert.assertTrue(eveningDressesTitle.isDisplayed());
         return this;
     }
-
 
     public ProductsPage clickOnProduct() {
         WebElement productImage = driver.findElement(By.xpath(PRODUCT_IMAGE));
@@ -38,5 +43,7 @@ public class ProductsPage {
         addToCartPopUp.clickOnCheckOutButton();
     }
 
-
+    public static By eveningDressesTitle(){
+        return By.xpath(EVENING_DRESSES_TITLE);
+    }
 }

@@ -10,6 +10,10 @@ public class AddToCartPopUp {
 
     private final String PROCEED_CHECKOUT_BUTTON = "//span[contains(text(),'Proceed to checkout')]//parent::a";
 
+    public static AddToCartPopUp getAddToCartPopUp() {
+        return new AddToCartPopUp();
+    }
+
     public void clickOnCheckOutButton() {
         WebElement proceedCheckoutButton = driver.findElement(By.xpath(PROCEED_CHECKOUT_BUTTON));
         proceedCheckoutButton.click();

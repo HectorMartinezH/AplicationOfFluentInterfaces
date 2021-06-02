@@ -1,17 +1,21 @@
 import org.testng.annotations.Test;
 import pages.*;
 
+import static pages.MainMenuBar.*;
+import static pages.ProductsPage.*;
+import static pages.ShoppingCartPageSection.*;
+
 public class ShoppingCartTests extends BaseTestClass{
-    MainMenuBar mainMenuBar = new MainMenuBar();
-    ProductsPage productsPage = new ProductsPage();
-    ShoppingCartPageSection shoppingCartPageSection = new ShoppingCartPageSection();
+    MainMenuBar mainMenuBar = getMainMenuBar();
+    ProductsPage productsPage = getProductPage();
+    ShoppingCartPageSection shoppingCartPageSection = getShoppingCartPageSection();
 
     @Test
     public void addProductToShoppingCartFromProductDetailPage() {
-        mainMenuBar.goToEveningDressesSubMenu()
+        mainMenuBar.goToOptionMenu(MenuBarEnum.DRESSES)
                    .clickOnEveningDressesSubMenu();
 
-        productsPage.checkIfEveningTitleIsDisplayed()
+        productsPage.checkIsDisplayed(eveningDressesTitle())
                     .clickOnProduct()
                     .addToShoppingCart()
                     .checkOutProduct();

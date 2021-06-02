@@ -1,17 +1,26 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static utils.DriverFactory.getChromeDriver;
+import java.util.concurrent.TimeUnit;
 
-public class ShoppingCartTests extends BaseTestClass{
+public class ShoppingCartTests {
 
     @Test
     public void addProductToShoppingCartFromProductDetailPage() {
+        System.setProperty("webdriver.chrome.driver","C:\\webDrivers\\chrome\\90\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().window().fullscreen();
+
+        driver.get("http://automationpractice.com/index.php");
+
         // Locate the Dresses Menu Option
-        Actions actions = new Actions(getChromeDriver());
+        Actions actions = new Actions(driver);
         WebElement dressesMenuOption = driver.findElement(By.xpath("//*[@id='block_top_menu']/ul/li[2]/a"));
         // Mouse over Dresses Menu Option
         actions.moveToElement(dressesMenuOption).perform();
@@ -38,5 +47,7 @@ public class ShoppingCartTests extends BaseTestClass{
         // Check that the quantity in the Cart is displayed 1
         WebElement cartQuantity = driver.findElement(By.xpath("//div[@class='shopping_cart']//span[@class='ajax_cart_quantity']"));
         Assert.assertEquals(cartQuantity.getAttribute("textContent"),"1");
+
+        driver.close();
     }
 }

@@ -16,19 +16,22 @@ public class ProductsPage {
     private final String PRODUCT_IMAGE = "//a[@class='product_img_link']";
 
 
-    public void checkIfEveningTitleIsDisplayed(){
+    public ProductsPage checkIfEveningTitleIsDisplayed(){
         WebElement eveningDressesTitle = driver.findElement(By.xpath(EVENING_DRESSES_TITLE));
         Assert.assertTrue(eveningDressesTitle.isDisplayed());
+        return this;
     }
 
 
-    public void clickOnProduct() {
+    public ProductsPage clickOnProduct() {
         WebElement productImage = driver.findElement(By.xpath(PRODUCT_IMAGE));
         productImage.click();
+        return this;
     }
 
-    public void addToShoppingCart() {
+    public ProductsPage addToShoppingCart() {
         productDetailPage.clickOnAddToCartButton();
+        return this;
     }
 
     public void checkOutProduct() {

@@ -15,10 +15,11 @@ public class MainMenuBar {
 
     private final String EVENING_DRESSES_SUB_MENU = "//*[@id='block_top_menu']/ul/li[2]/ul/li[2]/a";
 
-    public void goToEveningDressesSubMenu() {
+    public MainMenuBar goToEveningDressesSubMenu() {
         Actions actions = new Actions(getChromeDriver());
         WebElement dressesMenuOption = driver.findElement(By.xpath(DRESSES_MENU_OPTION));
         actions.moveToElement(dressesMenuOption).perform();
+        return this;
     }
 
     public void clickOnEveningDressesSubMenu() {

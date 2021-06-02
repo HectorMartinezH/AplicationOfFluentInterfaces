@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import utils.DriverFactory;
 
 public class ProductsPage {
@@ -15,9 +16,9 @@ public class ProductsPage {
     private final String PRODUCT_IMAGE = "//a[@class='product_img_link']";
 
 
-    public Boolean checkIfEveningTitleIsDisplayed(){
+    public void checkIfEveningTitleIsDisplayed(){
         WebElement eveningDressesTitle = driver.findElement(By.xpath(EVENING_DRESSES_TITLE));
-        return eveningDressesTitle.isDisplayed();
+        Assert.assertTrue(eveningDressesTitle.isDisplayed());
     }
 
 

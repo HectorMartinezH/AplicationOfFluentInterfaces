@@ -10,8 +10,8 @@ public class ShoppingCartTests extends BaseTestClass{
     @Test
     public void addProductToShoppingCartFromProductDetailPage() {
         mainMenuBar.goToEveningDressesSubMenu();
-        Assert.assertTrue(productsPage.checkIfEveningTitleIsDisplayed());
+        productsPage.checkIfEveningTitleIsDisplayed();
         productsPage.addProductToShoppingCart();
-        Assert.assertEquals(shoppingCartPageSection.getCartQuantityValue(),"1");
+        shoppingCartPageSection.checkCartQuantityValueIsEqualsTo("1");
     }
 }

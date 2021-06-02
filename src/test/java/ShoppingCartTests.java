@@ -9,8 +9,13 @@ public class ShoppingCartTests extends BaseTestClass{
     @Test
     public void addProductToShoppingCartFromProductDetailPage() {
         mainMenuBar.goToEveningDressesSubMenu();
+        mainMenuBar.clickOnEveningDressesSubMenu();
+
         productsPage.checkIfEveningTitleIsDisplayed();
-        productsPage.addProductToShoppingCart();
+        productsPage.clickOnProduct();
+        productsPage.addToShoppingCart();
+        productsPage.checkOutProduct();
+
         shoppingCartPageSection.checkCartQuantityValueIsEqualsTo("1");
     }
 }

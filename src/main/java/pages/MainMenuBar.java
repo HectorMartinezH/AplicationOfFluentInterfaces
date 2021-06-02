@@ -19,6 +19,9 @@ public class MainMenuBar {
         Actions actions = new Actions(getChromeDriver());
         WebElement dressesMenuOption = driver.findElement(By.xpath(DRESSES_MENU_OPTION));
         actions.moveToElement(dressesMenuOption).perform();
+    }
+
+    public void clickOnEveningDressesSubMenu() {
         WebElement eveningDressesSubMenu = driver.findElement(By.xpath(EVENING_DRESSES_SUB_MENU));
         eveningDressesSubMenu.click();
     }

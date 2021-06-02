@@ -22,10 +22,18 @@ public class ProductsPage {
     }
 
 
-    public void addProductToShoppingCart() {
+    public void clickOnProduct() {
         WebElement productImage = driver.findElement(By.xpath(PRODUCT_IMAGE));
         productImage.click();
+    }
+
+    public void addToShoppingCart() {
         productDetailPage.clickOnAddToCartButton();
+    }
+
+    public void checkOutProduct() {
         addToCartPopUp.clickOnCheckOutButton();
     }
+
+
 }

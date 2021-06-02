@@ -22,11 +22,7 @@ public class ProductsPage {
         return new ProductsPage();
     }
 
-    public ProductsPage checkIsDisplayed(By element){
-        WebElement eveningDressesTitle = driver.findElement(element);
-        Assert.assertTrue(eveningDressesTitle.isDisplayed());
-        return this;
-    }
+
 
     public ProductsPage clickOnProduct() {
         WebElement productImage = driver.findElement(By.xpath(PRODUCT_IMAGE));
